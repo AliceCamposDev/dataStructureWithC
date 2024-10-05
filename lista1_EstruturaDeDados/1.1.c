@@ -5,7 +5,6 @@
 
 int factorial(int num)
 {
-    printf("%d", num);
     int result = 1;
     if (num < 1)
         return 0;
