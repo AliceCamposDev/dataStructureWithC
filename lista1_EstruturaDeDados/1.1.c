@@ -12,17 +12,19 @@ int factorial(int num)
     {
         result *= num;
     }
-    return result;
+    return (result);
 }
 
-int even_sum(int num){
-     if (num < 1){
+int even_sum(int num)
+{
+    if (num < 1)
+    {
         printf("Escolha um número maior que 0\n");
         return 0;
     }
     int result = 0;
 
-    if (num%2 == 1)
+    if (num % 2 == 1)
         num--;
     for (; num >= 2; num -= 2)
     {
@@ -31,23 +33,27 @@ int even_sum(int num){
     return result;
 }
 
-bool is_prime_num(int num){
+bool is_prime_num(int num)
+{
     if (num < 2)
         return false;
     if (num == 2)
         return true;
     if (num % 2 == 0)
         return false;
-    for(int i = (num - 1) / 2; i > 2; i -= 2){
-        if (num % i == 0) 
+    for (int i = 3; i < (num - 1) / 2; i += 2)
+    {
+        if (num % i == 0)
             return false;
     };
     return true;
 }
 
-void fibonnacci(int num){
+void fibonnacci(int num)
+{
 
-    if (num < 1){
+    if (num < 1)
+    {
         printf("Escolha um número maior que 0\n");
         return;
     }
@@ -90,7 +96,7 @@ int main()
 
     case 'B':
     case 'b':
-        
+
         printf("Até que número deseja calcular a sequencia de fibonnacci? ");
         scanf("%d", &num);
         fibonnacci(num);
@@ -98,7 +104,7 @@ int main()
 
     case 'C':
     case 'c':
-        
+
         printf("Até que número deseja calcular a soma dos pares? ");
         scanf("%d", &num);
         printf("A soma é igual a %d\n", even_sum(num));
@@ -106,7 +112,7 @@ int main()
 
     case 'D':
     case 'd':
-        
+
         printf("Qual número quer verificar se é primo? ");
         scanf("%d", &num);
         printf("%d", num);
