@@ -96,7 +96,7 @@ void add_node(node_t **list, int value, int i)
         if (current->next != NULL)
         {
             node_t *new_node = mk_node(value, current->next);
-            current->next = new_node;   
+            current->next = new_node;
             return;
         }
         node_t *new_node = mk_node(value, NULL);

@@ -1,4 +1,4 @@
-//formula: E = 1 + 1/1! + 1/2! + 1/3! + ... + 1/N!
+// formula: E = 1 + 1/1! + 1/2! + 1/3! + ... + 1/N!
 
 #include <stdio.h>
 
@@ -14,15 +14,17 @@ int factorial(int num)
     return result;
 }
 
-int main (){
+int main()
+{
     int num;
     double e = 1.0;
     printf("Insira um número para aplicar a fórmula:\nE = 1 + 1/1! + 1/2! + 1/3! + ... + 1/N!\n");
     scanf("%d", &num);
-    for (int i = 1; i <= num; i++){
-        e += 1.0/factorial(i);
+    for (int i = 1; i <= num; i++)
+    {
+        e += 1.0 / factorial(i);
     }
     printf("o resultado é %f", e);
-    
+
     return 0;
 }

@@ -59,6 +59,8 @@
   "files.associations": {
     "random": "c",
     "chrono": "c",
-    "functional": "c"
+    "functional": "c",
+    "limits": "c",
+    "semaphore": "c"
   }
 }
