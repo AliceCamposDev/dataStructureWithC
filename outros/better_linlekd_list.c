@@ -7,6 +7,12 @@ typedef struct node
     struct node *next;
 } node_type;
 
+typedef struct list_type
+{
+    node_type *head;
+} llist;
+
+// make new node
 node_type *mk_node(int value, node_type *next)
 {
     node_type *new_node = malloc(sizeof(node_type));
@@ -15,11 +21,7 @@ node_type *mk_node(int value, node_type *next)
     return new_node;
 }
 
-typedef struct list_type
-{
-    node_type *head;
-} llist;
-
+// left push
 node_type *llist_lpush(llist *list, node_type *node)
 {
     if (list == NULL || node == NULL)
@@ -31,6 +33,7 @@ node_type *llist_lpush(llist *list, node_type *node)
     list->head = node;
 }
 
+// right push
 node_type *llist_rpush(llist *list, node_type *node)
 {
     if (list == NULL || node == NULL)
@@ -53,6 +56,24 @@ node_type *llist_rpush(llist *list, node_type *node)
     return node;
 }
 
+// print list
+void print_list(llist *list)
+{
+    if (list == NULL)
+    {
+        return;
+    }
+    node_type *current = list->head;
+    printf("[%d", current->value);
+    while (current->next)
+    {
+        current = current->next;
+        printf(", %d", current->value);
+    }
+    printf("]");
+}
+
+
 int main()
 {
 
@@ -63,6 +84,21 @@ int main()
     node_type *e = mk_node(3, d);
     node_type *f = mk_node(2, e);
     node_type *g = mk_node(1, f);
+
+    llist *list = (llist *)malloc(sizeof(llist));
+    list->head = g;
+
+    print_list(list);
+    printf("\n");
+
+    node_type *z = mk_node(99, NULL);
+    node_type*y = mk_node(7331, NULL);
+
+    llist_lpush(list, z);
+    llist_rpush(list, y);
+
+    print_list(list);
+    printf("\n");
 
     return 0;
 }
