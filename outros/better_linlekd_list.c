@@ -73,6 +73,22 @@ void print_list(llist *list)
     printf("]");
 }
 
+//get node by it's index
+node_type *llist_at (llist *list, int index){
+    if (list == NULL)
+    {
+        return NULL;
+    }
+    int i = index;
+    node_type *current = list->head;
+    while (current->next){
+        if (i == 0) return current;
+        current = current->next;
+        i--;
+    }
+    return NULL;
+}
+
 
 int main()
 {
@@ -92,7 +108,7 @@ int main()
     printf("\n");
 
     node_type *z = mk_node(99, NULL);
-    node_type*y = mk_node(7331, NULL);
+    node_type *y = mk_node(7331, NULL);
 
     llist_lpush(list, z);
     llist_rpush(list, y);
@@ -100,5 +116,10 @@ int main()
     print_list(list);
     printf("\n");
 
+    node_type *x = mk_node(1, NULL);
+
+    x = llist_at(list, 0);
+
+    printf("%d\n", x->value);
     return 0;
 }
