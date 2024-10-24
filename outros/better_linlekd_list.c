@@ -73,22 +73,67 @@ void print_list(llist *list)
     printf("]");
 }
 
-//get node by it's index
-node_type *llist_at (llist *list, int index){
+// get node by its index
+node_type *llist_at(llist *list, int index)
+{
     if (list == NULL)
     {
         return NULL;
     }
+    if (index == 0)
+    {
+        return list->head;
+    }
     int i = index;
     node_type *current = list->head;
-    while (current->next){
-        if (i == 0) return current;
+
+    while (current->next)
+    {
+        if (i == 1)
+        {
+            return current->next;
+        }
         current = current->next;
         i--;
     }
     return NULL;
 }
 
+// delete node
+node_type *llist_delete_node(llist *list, node_type *node)
+{
+    if (list == NULL)
+    {
+        return NULL;
+    }
+
+    node_type *current = list->head;
+
+    if (node == current)
+    {
+        list->head = current->next;
+        free(node);
+        return (list->head);
+    }
+
+    while (current->next)
+    {
+        if (current->next == node)
+        {
+            if (current->next->next)
+            {
+                current->next = current->next->next;
+                free(node);
+                return (list->head);
+            }
+            current->next = NULL;
+            free(node);
+            return (list->head);
+        }
+        current = current->next;
+    }
+    return (list->head);
+}
 
 int main()
 {
@@ -106,7 +151,7 @@ int main()
 
     print_list(list);
     printf("\n");
-
+    printf("\n");
     node_type *z = mk_node(99, NULL);
     node_type *y = mk_node(7331, NULL);
 
@@ -115,11 +160,25 @@ int main()
 
     print_list(list);
     printf("\n");
-
+    printf("\n");
     node_type *x = mk_node(1, NULL);
 
     x = llist_at(list, 0);
+    printf("%d", x->value);
+    printf("\n");
+    printf("\n");
 
-    printf("%d\n", x->value);
+    llist_delete_node(list, llist_at(list, 4));
+    print_list(list);
+    printf("\n");
+    printf("\n");
+    llist_delete_node(list, llist_at(list, 7));
+    print_list(list);
+    printf("\n");
+    printf("\n");
+    llist_delete_node(list, llist_at(list, 0));
+    print_list(list);
+
+    printf("\n");
     return 0;
 }
