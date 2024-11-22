@@ -65,7 +65,7 @@ void displayAllStudents(Student *students, int size)
 {
     for (int i = 0; i < size; i++)
     {
-        printf("Nome: %s, Nota: %d, Status: %s\n", students[i].name, students[i].finalGrade, students[i].approved ? "Aprovado":"Reprovado");
+        printf("Nome: %s, Nota: %d, Status: %s\n", students[i].name, students[i].finalGrade, students[i].approved ? "Aprovado" : "Reprovado");
     }
 }
 
@@ -81,13 +81,14 @@ void displayByStatus(Student *students, int size, char status)
             printf("Nome: %s, Nota: %d, Aprvado", students[i].name, students[i].finalGrade);
             found = true;
         }
-        else{
-            if (status == 'R' && !students[i].approved){
+        else
+        {
+            if (status == 'R' && !students[i].approved)
+            {
                 printf("Nome: %s, Nota: %d, Reprovado", students[i].name, students[i].finalGrade);
-            found = true;
+                found = true;
             }
         }
-
     }
     if (!found)
     {
